@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADDICTED TO THE BEAT 🎸</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;700;900&family=Oswald:wght@200;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 글리치 배경 효과 -->
+    <div class="glitch-wrapper">
+        <div class="glitch-text" data-text="ADDICTED">ADDICTED</div>
+    </div>
+    
+    <!-- 네온 파티클 -->
+    <div id="particles"></div>
+    
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+        <!-- 히어로 섹션 -->
+        <section class="hero">
+            <h1 class="main-title">
+                <span class="neon-text">ADDICTED TO THE BEAT</span>
+                <span class="sub-text">音楽中毒</span>
+            </h1>
+            
+            <div class="intro-message">
+                <p class="greeting en">YO! WE'RE FROM KOREA 🇰🇷<br>WANNA GRAB A DRINK?</p>
+                <p class="greeting jp">よ！韓国から来たよ<br>一緒に飲まない？🍻</p>
+                <p class="greeting kr">ㅎㅇ 우리 한국에서 왔어 같이 술마실래?</p>
+            </div>
+            
+            <!-- 메인 사진 -->
+            <div class="main-photo-container">
+                <img src="fujirock-photo.jpg" alt="Fuji Rock 2024 Squad" class="main-photo">
+                <div class="photo-overlay">
+                    <p>FUJI ROCK '24 SURVIVORS</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 멤버 소개 섹션 -->
+        <section class="members">
+            <h2 class="section-title glitch" data-text="MEET THE SQUAD">MEET THE SQUAD</h2>
+            
+            <div class="members-grid">
+                <!-- 멤버 1 -->
+                <div class="member-card" data-member="1">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 1</h3>
+                        <p class="member-vibe">The Energy Bomb 💥</p>
+                        <a href="https://instagram.com/member1" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member1</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 멤버 2 -->
+                <div class="member-card" data-member="2">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 2</h3>
+                        <p class="member-vibe">The Vibe Master 🌊</p>
+                        <a href="https://instagram.com/member2" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member2</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 멤버 3 -->
+                <div class="member-card" data-member="3">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 3</h3>
+                        <p class="member-vibe">The Party Starter 🎉</p>
+                        <a href="https://instagram.com/member3" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member3</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 멤버 4 -->
+                <div class="member-card" data-member="4">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 4</h3>
+                        <p class="member-vibe">The Groove Keeper 🎸</p>
+                        <a href="https://instagram.com/member4" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member4</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 멤버 5 -->
+                <div class="member-card" data-member="5">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 5</h3>
+                        <p class="member-vibe">The Beat Dropper 🎧</p>
+                        <a href="https://instagram.com/member5" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member5</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 멤버 6 -->
+                <div class="member-card" data-member="6">
+                    <div class="member-inner">
+                        <h3 class="member-name">MEMBER 6</h3>
+                        <p class="member-vibe">The Soul Shaker 🔥</p>
+                        <a href="https://instagram.com/member6" class="insta-link" target="_blank">
+                            <span class="insta-handle">@member6</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 카카오톡 링크 -->
+            <div class="kakao-section">
+                <a href="https://open.kakao.com/o/gXXXXXXX" class="kakao-link" target="_blank">
+                    <span class="kakao-text">JOIN OUR KAKAO PARTY 💬</span>
+                </a>
+            </div>
+        </section>
+        
+        <!-- 방명록 섹션 -->
+        <section class="guestbook">
+            <h2 class="section-title">DROP A MESSAGE 📝</h2>
+            
+            <div class="guestbook-form">
+                <input type="text" id="guestName" placeholder="YOUR NAME" class="guest-input">
+                <textarea id="guestMessage" placeholder="LEAVE YOUR VIBE HERE..." class="guest-textarea"></textarea>
+                <button class="submit-btn" onclick="addMessage()">DROP IT LIKE IT'S HOT 🔥</button>
+            </div>
+            
+            <div id="messages" class="messages-container"></div>
+        </section>
+        
+        <!-- 플로팅 이모지 -->
+        <div class="floating-emojis">
+            <span class="emoji" style="--delay: 0s">🎸</span>
+            <span class="emoji" style="--delay: 1s">🍻</span>
+            <span class="emoji" style="--delay: 2s">🎵</span>
+            <span class="emoji" style="--delay: 3s">🔥</span>
+            <span class="emoji" style="--delay: 4s">🌟</span>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
