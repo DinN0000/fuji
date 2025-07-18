@@ -176,6 +176,39 @@ function typeWriter(element, text, speed = 50) {
     type();
 }
 
+// 사진 클릭 시 영상으로 대체
+function setupPhotoVideoSwitch() {
+    const photoContainer = document.getElementById('photoContainer');
+    
+    photoContainer.addEventListener('click', () => {
+        // 영상 iframe 생성
+        const videoContainer = document.createElement('div');
+        videoContainer.className = 'video-container';
+        videoContainer.innerHTML = `
+            <iframe 
+                src="https://www.youtube.com/embed/ZAJ97kUy_tI?autoplay=1&mute=1&start=30&loop=1&playlist=ZAJ97kUy_tI" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        `;
+        
+        // 기존 컨텐츠 숨기기
+        const mainPhoto = document.getElementById('mainPhoto');
+        const photoOverlay = photoContainer.querySelector('.photo-overlay');
+        mainPhoto.style.display = 'none';
+        photoOverlay.style.display = 'none';
+        
+        // 영상 추가
+        photoContainer.appendChild(videoContainer);
+        
+        // 클릭 이벤트 제거 (중복 방지)
+        photoContainer.style.cursor = 'default';
+        photoContainer.replaceWith(photoContainer.cloneNode(true));
+    });
+}
+
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
@@ -183,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadMessages();
     setupMemberCards();
     setupScrollEffects();
+    setupPhotoVideoSwitch();
     
     // 엔터키로 메시지 전송
     document.getElementById('guestMessage').addEventListener('keypress', (e) => {
@@ -268,3 +302,64 @@ function createDynamicBackground() {
 console.log('%c🎸 ADDICTED TO THE BEAT 🎸', 'font-size: 30px; color: #ff006e; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);');
 console.log('%c우리랑 놀자! Join the party!', 'font-size: 16px; color: #06ffa5;');
 console.log('%c후지락에서 만나요 🍻', 'font-size: 14px; color: #ffbe0b;');
+
+// Supabase 연동 정보 추가
+const SUPABASE_URL = 'https://vsvmlsjmrekdivkuigns.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzdm1sc2ptcmVrZGl2a3VpZ25zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2MzA1NzMsImV4cCI6MjA2ODIwNjU3M30.wa7rjlnYfGrmC4nsE_OnpmVYdXaawCUqS6gTktdotE0';
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// 방명록 작성 함수
+async function addGuestbookEntry(name, message) {
+  const { data, error } = await supabase
+    .from('guestbook')
+    .insert([{ name, message }]);
+  if (error) {
+    alert('오류: ' + error.message);
+  } else {
+    alert('방명록이 등록되었습니다!');
+    fetchAndRenderGuestbook();
+  }
+}
+
+// 방명록 불러오기 함수
+async function fetchGuestbookEntries() {
+  const { data, error } = await supabase
+    .from('guestbook')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (error) {
+    alert('오류: ' + error.message);
+    return [];
+  }
+  return data;
+}
+
+// 방명록 목록 렌더링 함수
+async function fetchAndRenderGuestbook() {
+  const entries = await fetchGuestbookEntries();
+  const list = document.getElementById('guestbook-list');
+  list.innerHTML = '';
+  entries.forEach(entry => {
+    const item = document.createElement('div');
+    item.className = 'guestbook-entry';
+    item.innerHTML = `<b>${entry.name}</b>: ${entry.message} <span style='color:#888;font-size:0.8em;'>(${new Date(entry.created_at).toLocaleString()})</span>`;
+    list.appendChild(item);
+  });
+}
+
+// 폼 이벤트 연결
+window.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('guestbook-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = form.elements['name'].value.trim();
+    const message = form.elements['message'].value.trim();
+    if (!name || !message) {
+      alert('이름과 메시지를 모두 입력해 주세요.');
+      return;
+    }
+    await addGuestbookEntry(name, message);
+    form.reset();
+  });
+  fetchAndRenderGuestbook();
+});

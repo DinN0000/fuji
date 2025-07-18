@@ -179,35 +179,57 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* 인트로 메시지 */
+/* 인트로 메시지 - marquee 효과 */
 .intro-message {
-    text-align: center;
     margin: 3rem 0;
-    animation: fadeIn 1.5s ease-out 0.5s both;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
 }
 
-.greeting {
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    margin: 1rem 0;
-    line-height: 1.5;
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+    padding: 1.5rem 0;
 }
 
-.greeting.en {
-    color: var(--neon-yellow);
+.marquee-content {
+    display: inline-flex;
+    animation: marquee 25s linear infinite;
+}
+
+.greeting-text {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+    padding-right: 2rem;
+    font-family: 'Bebas Neue', 'Noto Sans KR', sans-serif;
+    letter-spacing: 1px;
 }
 
-.greeting.jp {
-    color: var(--neon-green);
-    font-family: 'Noto Sans KR', sans-serif;
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-.greeting.kr {
-    color: var(--neon-blue);
-    font-family: 'Noto Sans KR', sans-serif;
-    opacity: 0.8;
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 @keyframes fadeIn {
@@ -227,6 +249,13 @@ body {
     background-size: 200% 200%;
     animation: gradient-shift 3s ease infinite, photoSlide 1.5s ease-out 1s both;
     padding: 3px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-photo-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 50px rgba(255, 0, 255, 0.5);
 }
 
 .main-photo {
@@ -252,6 +281,43 @@ body {
     letter-spacing: 3px;
     color: white;
     text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.click-hint {
+    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    color: var(--neon-yellow) !important;
+    margin-top: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* 영상 컨테이너 */
+.video-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 @keyframes photoSlide {
@@ -579,3 +645,4 @@ body {
         transform: translateY(0);
     }
 }
+
