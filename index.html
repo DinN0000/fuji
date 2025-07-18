@@ -26,97 +26,21 @@
             </h1>
             
             <div class="intro-message">
-                <p class="greeting en">YO! WE'RE FROM KOREA 🇰🇷<br>WANNA GRAB A DRINK?</p>
-                <p class="greeting jp">よ！韓国から来たよ<br>一緒に飲まない？🍻</p>
-                <p class="greeting kr">ㅎㅇ 우리 한국에서 왔어 같이 술마실래?</p>
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <span class="greeting-text">YO! WE'RE FROM KOREA 🇰🇷 WANNA GRAB A DRINK? &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; よ！韓国から来たよ 一緒に飲まない？🍻 &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; ㅎㅇ 우리 한국에서 왔어 같이 술마실래? &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+                        <span class="greeting-text">YO! WE'RE FROM KOREA 🇰🇷 WANNA GRAB A DRINK? &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; よ！韓国から来たよ 一緒に飲まない？🍻 &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; ㅎㅇ 우리 한국에서 왔어 같이 술마실래? &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                </div>
             </div>
             
             <!-- 메인 사진 -->
-            <div class="main-photo-container">
-                <img src="fujirock-photo.jpg" alt="Fuji Rock 2024 Squad" class="main-photo">
+            <div class="main-photo-container" id="photoContainer">
+                <img src="fujirock-photo.jpg" alt="Fuji Rock 2024 Squad" class="main-photo" id="mainPhoto">
                 <div class="photo-overlay">
                     <p>FUJI ROCK '24 SURVIVORS</p>
+                    <p class="click-hint">🎵 CLICK TO PLAY VIDEO 🎵</p>
                 </div>
-            </div>
-        </section>
-        
-        <!-- 멤버 소개 섹션 -->
-        <section class="members">
-            <h2 class="section-title glitch" data-text="MEET THE SQUAD">MEET THE SQUAD</h2>
-            
-            <div class="members-grid">
-                <!-- 멤버 1 -->
-                <div class="member-card" data-member="1">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 1</h3>
-                        <p class="member-vibe">The Energy Bomb 💥</p>
-                        <a href="https://instagram.com/member1" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member1</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 멤버 2 -->
-                <div class="member-card" data-member="2">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 2</h3>
-                        <p class="member-vibe">The Vibe Master 🌊</p>
-                        <a href="https://instagram.com/member2" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member2</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 멤버 3 -->
-                <div class="member-card" data-member="3">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 3</h3>
-                        <p class="member-vibe">The Party Starter 🎉</p>
-                        <a href="https://instagram.com/member3" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member3</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 멤버 4 -->
-                <div class="member-card" data-member="4">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 4</h3>
-                        <p class="member-vibe">The Groove Keeper 🎸</p>
-                        <a href="https://instagram.com/member4" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member4</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 멤버 5 -->
-                <div class="member-card" data-member="5">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 5</h3>
-                        <p class="member-vibe">The Beat Dropper 🎧</p>
-                        <a href="https://instagram.com/member5" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member5</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 멤버 6 -->
-                <div class="member-card" data-member="6">
-                    <div class="member-inner">
-                        <h3 class="member-name">MEMBER 6</h3>
-                        <p class="member-vibe">The Soul Shaker 🔥</p>
-                        <a href="https://instagram.com/member6" class="insta-link" target="_blank">
-                            <span class="insta-handle">@member6</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 카카오톡 링크 -->
-            <div class="kakao-section">
-                <a href="https://open.kakao.com/o/gXXXXXXX" class="kakao-link" target="_blank">
-                    <span class="kakao-text">JOIN OUR KAKAO PARTY 💬</span>
-                </a>
             </div>
         </section>
         
@@ -143,6 +67,7 @@
         </div>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="script.js"></script>
 </body>
 </html>
