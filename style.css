@@ -284,9 +284,12 @@ body {
 }
 
 .click-hint {
-    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    font-size: clamp(2rem, 4vw, 2.8rem) !important;
     color: var(--neon-yellow) !important;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #ffbe0b, 0 0 30px #fff;
     animation: pulse 2s ease-in-out infinite;
 }
 
