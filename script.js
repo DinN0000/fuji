@@ -44,10 +44,14 @@ async function loadMessages() {
         const messageItem = document.createElement('div');
         messageItem.className = 'message-item';
         messageItem.innerHTML = `
-            <div class="message-author">${escapeHtml(msg.name)}</div>
-            <div class="message-text">${escapeHtml(msg.message)}</div>
-            <div class="message-time">${new Date(msg.created_at).toLocaleString()}</div>
-            <button class="delete-btn" onclick="deleteMessage(${msg.id})">삭제</button>
+            <div class="message-main">
+                <div class="message-author">${escapeHtml(msg.name)}</div>
+                <div class="message-text">${escapeHtml(msg.message)}</div>
+            </div>
+            <div class="message-meta">
+                <div class="message-time">${new Date(msg.created_at).toLocaleString()}</div>
+                <button class="delete-btn" onclick="deleteMessage(${msg.id})">삭제</button>
+            </div>
         `;
         messagesContainer.appendChild(messageItem);
     });
