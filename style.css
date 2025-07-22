@@ -650,19 +650,113 @@ body {
     }
 }
 
+/* 팀 섹션 */
+.team-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, var(--dark-bg), var(--dark-surface));
+}
+
+.team-photo-container {
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    position: relative;
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-green), var(--neon-yellow));
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+    padding: 3px;
+}
+
+.team-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.1) saturate(1.2);
+}
+
+.team-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 5rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+    text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+}
+
+/* 멤버 그리드 수정 */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.member-card {
+    background: var(--dark-surface);
+    border: 2px solid transparent;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    border: 3px solid var(--neon-pink);
+    transition: all 0.3s ease;
+}
+
+.member-card:hover .member-photo {
+    transform: scale(1.1);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 30px rgba(6, 255, 165, 0.5);
+}
+
+.member-intro {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    font-style: italic;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .neon-text {
         font-size: clamp(2.5rem, 12vw, 5rem);
     }
     
+    .team-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+    
+    .team-photo-container {
+        margin-bottom: 2rem;
+    }
+    
     .members-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .member-card {
         padding: 1.5rem;
+    }
+    
+    .member-photo {
+        width: 120px;
+        height: 120px;
     }
 }
 
